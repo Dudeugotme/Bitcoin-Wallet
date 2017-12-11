@@ -3,11 +3,13 @@
 Модифицированный SPV Wallet для Bitcoin, использует наработки от Lighting Network, OpenBazaar  и btcd проектов.
 
 1. Установить версию go. https://golang.org/doc/install
-2. Настроить GOPATH и для workspace проекта
-3. git clone https://github.com/OpenDomido/Bitcoin-Wallet.git
-4. CD /Bitcoin-Wallet
+2. Настроить GOPATH и для workspace проекта. Переходим в папку <workspace>/src
+3. git clone https://github.com/OpenDomido/Bitcoin-Wallet.git или go get github.com/OpenDomido/Bitcoin-Wallet
+4. В папке workspace (там где GoPath) или в папке github переходим cd Bitcoin-Wallet/cmd/bitcoin
 5. go get установит все зависимости
-6. Команда bitcoin запустить проект и grpc сервис.
+6. go build -  соберет проект
+7. go install - установить проект  
+9. Команда bitcoin запустить проект и grpc сервис.
 
 В папке API лежит описание сервисов grpc, файл API.proto
 
