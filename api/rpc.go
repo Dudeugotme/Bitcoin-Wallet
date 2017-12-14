@@ -3,6 +3,12 @@ package api
 import (
 	"encoding/hex"
 	"errors"
+	"net"
+	"os"
+	"strings"
+	"sync"
+	"time"
+
 	"github.com/OpenDomido/Bitcoin-Wallet"
 	"github.com/OpenDomido/Bitcoin-Wallet/api/pb"
 	"github.com/OpenDomido/wallet-interface"
@@ -16,18 +22,18 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"net"
-	"sync"
-	"time")
+)
 
-const Addr = "127.0.0.1:8234"
+func Addr() string {
+	return strings.Join([]string{"127.0.0.1", ":", os.Getenv("GRPCPORT")}, "")
+}
 
 type server struct {
 	w *btcwallet.SPVWallet
 }
 
 func ServeAPI(w *btcwallet.SPVWallet) error {
-	lis, err := net.Listen("tcp", Addr)
+	lis, err := net.Listen("tcp", Addr())
 	if err != nil {
 		return err
 	}

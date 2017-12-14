@@ -6,18 +6,19 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/OpenDomido/jsonpb"
-	"github.com/OpenDomido/Bitcoin-Wallet"
-	"github.com/OpenDomido/Bitcoin-Wallet/api"
-	"github.com/OpenDomido/Bitcoin-Wallet/api/pb"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/jessevdk/go-flags"
-	"golang.org/x/net/context"
-	"google.golang.org/grpc"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/OpenDomido/Bitcoin-Wallet"
+	"github.com/OpenDomido/Bitcoin-Wallet/api"
+	"github.com/OpenDomido/Bitcoin-Wallet/api/pb"
+	"github.com/OpenDomido/jsonpb"
+	"github.com/btcsuite/btcd/wire"
+	"github.com/jessevdk/go-flags"
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
 )
 
 func SetupCli(parser *flags.Parser) {
@@ -293,7 +294,7 @@ func SetupCli(parser *flags.Parser) {
 
 func newGRPCClient() (pb.APIClient, *grpc.ClientConn, error) {
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(api.Addr, grpc.WithInsecure())
+	conn, err := grpc.Dial(api.Addr(), grpc.WithInsecure())
 	if err != nil {
 		return nil, nil, err
 	}
