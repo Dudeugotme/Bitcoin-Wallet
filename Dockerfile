@@ -1,22 +1,27 @@
-#FROM golang
-
-#ADD . /go/src/Bitcoin-Wallet
-#WORKDIR /go/src/Bitcoin-Wallet
-
-#RUN go get ./...
-#RUN go install ./...
-
-#WORKDIR /go/bin/
-FROM alpine
-
+FROM golang:latest
 RUN mkdir -p ~/.spvwallet
 
-COPY ./dist/bitcoin /usr/local/bin/bitcoin
+ADD ./dist/bitcoin /go/bin/bitcoin
 
-RUN chmod +x /usr/local/bin/bitcoin
+RUN chmod +x /go/bin/bitcoin 
 
-ENTRYPOINT []
-
-CMD bitcoin
+CMD /go/bin/bitcoin
 
 EXPOSE 8234
+
+
+#FROM alpine:latest
+
+#RUN mkdir -p ~/.spvwallet
+
+#RUN apk --no-cache add bash go git ca-certificates
+#RUN mkdir -p /go/src /go/bin && chmod -R 777 /go
+#ENV GOPATH /go
+#ENV PATH /go/bin:$PATH
+#ADD ./dist/bitcoin /go/bin/bitcoin
+
+#RUN chmod +x /go/bin/bitcoin 
+
+#CMD /go/bin/bitcoin
+
+#EXPOSE 8234

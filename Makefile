@@ -8,8 +8,8 @@ login:
 build:
 	mkdir -p dist
 	go get
-	go build -a -o dist/bitcoin -work cmd/bitcoin/main.go
-	docker build -q -t opendomido/bitcoinwallet .
+	GOOS=linux GOARCH=amd64 go build -a -o dist/bitcoin -work cmd/bitcoin/main.go
+	docker build -t opendomido/bitcoinwallet .
 	#docker tag ${ID} opendomido/bitcoinwallet:$(or $(tag), "latest")
 	#docker tag ${ID} opendomido/bitcoinwallet:latest
 push:
