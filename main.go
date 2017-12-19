@@ -1,4 +1,4 @@
-package main
+package btcwallet
 
 import (
 	"encoding/json"
@@ -51,15 +51,15 @@ type Version struct{}
 
 var start Start
 var version Version
-var wallet *btcwallet.SPVWallet
+var wl *btcwallet.SPVWallet
 
 func main() {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	go func() {
 		for range c {
-			fmt.Println("SPVWallet shutting down...")
-			wallet.Close()
+			fmt.Println("SPVwl. shutting down...")
+			wl.Close()
 			os.Exit(1)
 		}
 	}()
@@ -71,8 +71,8 @@ func main() {
 		start.Execute([]string{"defaultSettings"})
 	} else {
 		parser.AddCommand("start",
-			"start the wallet",
-			"The start command starts the wallet daemon",
+			"start the wl.",
+			"The start command starts the wl. daemon",
 			&start)
 		parser.AddCommand("version",
 			"print the version number",
@@ -156,7 +156,7 @@ func (x *Start) Execute(args []string) error {
 	bitcoinFileFormatter := logging.NewBackendFormatter(bitcoinFile, fileLogFormat)
 	config.Logger = logging.MultiLogger(logging.MultiLogger(bitcoinFileFormatter))
 
-	// Select wallet datastore
+	// Select wl. datastore
 	sqliteDatastore, _ := db.Create(config.RepoPath)
 	config.DB = sqliteDatastore
 
@@ -253,16 +253,16 @@ func (x *Start) Execute(args []string) error {
 	config.LowFee = settings.Fees.Economic
 
 	creationDate := time.Time{}
-	if x.WalletCreationDate != "" {
+	if x.WalletCreationDate  != "" {
 		creationDate, err = time.Parse(time.RFC3339, x.WalletCreationDate)
 		if err != nil {
-			return errors.New("Wallet creation date timestamp must be in RFC3339 format")
+			return errors.New("wl. creation date timestamp must be in RFC3339 format")
 		}
 	}
 	config.CreationDate = creationDate
 
-	// Create the wallet
-	wallet, err = btcwallet.NewSPVWallet(config)
+	// Create the wl.
+	wl, err = btcwallet.NewSPVWallet(config)
 	if err != nil {
 		return err
 	}
@@ -298,21 +298,21 @@ func (x *Start) Execute(args []string) error {
 
 	}
 
-	wallet.AddTransactionListener(listener)
+	wl.AddTransactionListener(listener)
 
-	go api.ServeAPI(wallet)
+	go api.ServeAPI(wl)
 
 	// Start it!
 	printSplashScreen()
 
 
-	wallet.Start()
+	wl.Start()
 
 	return nil
 }
 
 func printSplashScreen() {
 	fmt.Println("")
-	fmt.Println("Bitcoin wallet v=" + btcwallet.WALLET_VERSION + " ...")
+	fmt.Println("Bitcoin wl. v=" + btcwallet.WALLET_VERSION + " ...")
 	fmt.Println("[Press Ctrl+C to exit]")
 }
