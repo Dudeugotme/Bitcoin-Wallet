@@ -6,6 +6,6 @@ ADD . /app/
 WORKDIR /app
 RUN go build -o bitcoin main.go
 
-CMD ["./bitcoin"]
+CMD ["/bin/sh -c bitcoin"]
 
 EXPOSE 8234
