@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: bitcoinwallet
+  name: btcwallet
   labels:
-    name: bitcoinwallet
+    name: btcwallet
 spec:
   # type: ClusterIP
   ports:
@@ -11,4 +11,4 @@ spec:
     port: 8234
     targetPort: 8234
   selector:
-    name: bitcoinwallet
+    name: btcwallet

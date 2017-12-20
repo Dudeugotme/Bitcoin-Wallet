@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: bitcoinwallet
+  name: btcwallet
   labels:
-    name: bitcoinwallet
+    name: btcwallet
 spec:
   replicas: 1 # need 2 or more
   template:
@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: bitcoinwallet
-        image: opendomido/bitcoinwallet
+        image: opendomido/bitcoin-wallet
         imagePullPolicy: Always
         ports:
         - name: btcwalletport
@@ -21,7 +21,7 @@ spec:
         volumeMounts:
         - name: btcwalletdb
           mountPath: /root/.spvwallet
-          subPath:
+          subPath:spwallet
         #env:
       imagePullSecrets:
        - name: regsecret
