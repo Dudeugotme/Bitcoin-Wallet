@@ -24,7 +24,7 @@ spec:
           subPath: spwallet
         env:
         - name: GRPCPORT
-          value: 8234
+          value: "8234"
       imagePullSecrets:
        - name: regsecret
       volumes:
