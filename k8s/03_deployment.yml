@@ -21,7 +21,7 @@ spec:
         volumeMounts:
         - name: btcwalletdb
           mountPath: /root/.spvwallet
-          subPath:spwallet
+          subPath: spwallet
         #env:
       imagePullSecrets:
        - name: regsecret
