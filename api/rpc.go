@@ -25,7 +25,7 @@ import (
 )
 
 func Addr() string {
-	return strings.Join([]string{"127.0.0.1", ":", os.Getenv("GRPCPORT")}, "")
+	return strings.Join([]string{"0.0.0.0", ":", os.Getenv("GRPCPORT")}, "")
 }
 
 type server struct {

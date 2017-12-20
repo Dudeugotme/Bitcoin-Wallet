@@ -22,7 +22,9 @@ spec:
         - name: btcwalletdb
           mountPath: /root/.spvwallet
           subPath: spwallet
-        #env:
+        env:
+        - name: GRPCPORT
+          value: 8234
       imagePullSecrets:
        - name: regsecret
       volumes:
