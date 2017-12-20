@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: bitcoinwallet
+  name: btcwallet
   labels:
-    name: bitcoinwallet
+    name: btcwallet
 spec:
   replicas: 1 # need 2 or more
   template:
     metadata:
       labels:
-        name: bitcoinwallet
+        name: btcwallet
     spec:
       containers:
-      - name: bitcoinwallet
+      - name: btcwallet
         image: opendomido/bitcoinwallet
         imagePullPolicy: Always
         ports:
@@ -28,4 +28,4 @@ spec:
       volumes:
       - name: btcwalletdb
         persistentVolumeClaim:
-          claimName: btcwallet-pv-claim       
+          claimName: btcwallet-pv-claim
