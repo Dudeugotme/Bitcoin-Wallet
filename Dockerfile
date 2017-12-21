@@ -11,6 +11,6 @@ RUN go-wrapper download
 
 RUN go-wrapper install
 
-CMD ["go-wrapper", "run"]
+ENTRYPOINT ["go-wrapper", "run"]
 
 EXPOSE 8234
