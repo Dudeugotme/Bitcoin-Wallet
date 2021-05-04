@@ -1,7 +1,7 @@
 package btcwallet
 
 import (
-	"github.com/OpenDomido/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	hd "github.com/btcsuite/btcutil/hdkeychain"
 	"github.com/btcsuite/goleveldb/leveldb/errors"

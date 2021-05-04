@@ -2,7 +2,7 @@ package btcwallet
 
 import (
 	"bytes"
-	"github.com/OpenDomido/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"net/http"
 	"testing"
 )
@@ -27,7 +27,7 @@ func (m *mockHttpClient) Get(url string) (*http.Response, error) {
 }
 
 func TestFeeProvider_GetFeePerByte(t *testing.T) {
-	fp := NewFeeProvider(2000, 360, 320, 280, "https://btc.fees.OpenDomido.org", nil)
+	fp := NewFeeProvider(2000, 360, 320, 280, "https://btc.fees.OpenBazaar.org", nil)
 	fp.httpClient = new(mockHttpClient)
 
 	// Test fetch from API

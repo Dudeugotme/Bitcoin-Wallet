@@ -3,7 +3,7 @@ package btcwallet
 import (
 	"bytes"
 	"errors"
-	"github.com/OpenDomido/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/blockchain"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"

@@ -3,7 +3,7 @@ package db
 import (
 	"database/sql"
 	"encoding/hex"
-	"github.com/OpenDomido/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/wire"
 	"strconv"

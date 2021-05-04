@@ -9,10 +9,9 @@ build:
 	mkdir -p dist
 	go get
 	GOOS=linux GOARCH=amd64  go build -a -o dist/bitcoin -work cmd/bitcoin/main.go
-	docker build -t opendomido/bitcoinwallet .
-	#docker tag ${ID} opendomido/bitcoinwallet:$(or $(tag), "latest")
-	#docker tag ${ID} opendomido/bitcoinwallet:latest
+	docker build -t s1rxploit/bitcoinwallet .
+	#docker tag ${ID} s1rxploit/bitcoinwallet:$(or $(tag), "latest")
+	#docker tag ${ID} s1rxploit/bitcoinwallet:latest
 push:
-	docker push opendomido/bitcoinwallet:latest
+	docker push OpenBazaar/bitcoinwallet:latest
 release: build push
-	

@@ -9,9 +9,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/OpenDomido/Bitcoin-Wallet"
-	"github.com/OpenDomido/Bitcoin-Wallet/api/pb"
-	"github.com/OpenDomido/wallet-interface"
+	"github.com/Dudeugotme/Bitcoin-Wallet"
+	"github.com/Dudeugotme/Bitcoin-Wallet/api/pb"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/txscript"

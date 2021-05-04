@@ -1,7 +1,7 @@
 package btcwallet
 
 import (
-	"github.com/OpenDomido/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/mitchellh/go-homedir"
 	"github.com/op/go-logging"

@@ -2,7 +2,7 @@ package btcwallet
 
 import (
 	"encoding/json"
-	"github.com/OpenDomido/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"golang.org/x/net/proxy"
 	"net"
 	"net/http"

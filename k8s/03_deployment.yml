@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: btcwallet
-        image: opendomido/bitcoin-wallet
+        image: OpenBazaar/bitcoin-wallet
         imagePullPolicy: Always
         ports:
         - name: btcwalletport
